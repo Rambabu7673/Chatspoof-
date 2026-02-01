@@ -7,10 +7,20 @@ import cors from "cors";
 const app = express();
 dotenv.config({});
 
+// cors use karna frontend tak le jane ke liye
+/* ✅ YAHAN CORS LAGANA HAI */
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",       // local dev
+      "https://chatspoof.vercel.app" // Vercel frontend URL
+    ],
+    methods: ["GET", "POST"],
+    credentials: true
+  })
+);
 // middleware ko use karenge
 app.use(express.json());
-// cors use karna frontend tak le jane ke liye
-app.use(cors());
 
 // Home Route hai
 app.get("/", (req, res) => {

@@ -21,10 +21,10 @@ const Bot = () => {
     if (!input.trim()) return;
 
     try {
-      const res = await axios.post("http://localhost:4002/bot/v1/message", {
-        text: input,
-        
-      });
+    const res= await  axios.post(`${import.meta.env.VITE_API_URL}/bot/v1/message`, {
+       text: input,
+     });
+console.log(import.meta.env.VITE_API_URL);
       
       if (res.status === 200) {
         setMessage([
